@@ -43,6 +43,8 @@ public class displayDetails extends AppCompatActivity {
     }
     public final static String TITLE_MESSAGE = "abhi.android";
     public final static String SUBTITLE_MESSAGE="abhi.android2";
+    public final static String POS_MESSAGE="abhi.android3";
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent myIntent;
@@ -52,6 +54,7 @@ public class displayDetails extends AppCompatActivity {
                 myIntent = new Intent(getApplicationContext(), regActivity.class);
                 myIntent.putExtra(TITLE_MESSAGE,title);
                 myIntent.putExtra(SUBTITLE_MESSAGE,subtitle);
+                myIntent.putExtra(POS_MESSAGE,"Hello");
                 startActivityForResult(myIntent, 0);
                 break;
             case android.R.id.home:

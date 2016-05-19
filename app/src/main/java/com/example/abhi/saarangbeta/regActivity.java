@@ -23,14 +23,13 @@ public class regActivity extends AppCompatActivity {
         setContentView(R.layout.activity_reg);
 
         Intent intent = getIntent();
-        String title = intent.getStringExtra(displayDetails.TITLE_MESSAGE);
-        String subtitle = intent.getStringExtra(displayDetails.SUBTITLE_MESSAGE);
-        //intent.getStringExtra(SimpleAdapter.TITLE_MESSAGE);
-        int position = 2; //TODO - convert this into a getextra type
+        title = intent.getStringExtra(displayDetails.TITLE_MESSAGE);
+        subtitle = intent.getStringExtra(displayDetails.SUBTITLE_MESSAGE);
+        String position = intent.getExtras().getString(displayDetails.POS_MESSAGE);
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setTitle(subtitle);
+        actionBar.setTitle((position));
         TextView test = (TextView) findViewById(R.id.testtitle);
         test.setText(title);
 
@@ -47,7 +46,7 @@ public class regActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter= new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, events);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setSelection(position);
+        spinner.setSelection(4);
     }
     public final static String TITLE_MESSAGE = "hello";
     public final static String SUBTITLE_MESSAGE = "hi";
