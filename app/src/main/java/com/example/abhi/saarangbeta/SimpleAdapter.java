@@ -2,6 +2,7 @@ package com.example.abhi.saarangbeta;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,43 +12,37 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+/*Adapter for the RecyclerView is implemented here */
 
 public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.ViewHolder> {
 
-    //ContactInfo - data model for details
-    public class ContactInfo {
-        protected String title;
-        protected String subtitle;
-        protected String imgsrc;
-
-        public ContactInfo(String ttl, String subttl, String imgs){
-            title = ttl;
-            subtitle = subttl;
-            imgsrc = imgs;
-        }
-    }
-
     //List which will hold the data as classes
-    private List<ContactInfo> contactList;
+    private List<DataInfo> dataList;
 
+    public String getTitle(int index){
+        return dataList.get(index).getTitle();
+    }
     //Constructor - assigns values to the list of data items
     public SimpleAdapter() {
-        this.contactList = new ArrayList<>();
-        this.contactList.add(new ContactInfo("Decibels","Rock","saarang1"));
-        this.contactList.add(new ContactInfo("Acapella","Light Music","saarang1"));
-        this.contactList.add(new ContactInfo("Alankaar","Classical Music","saarang1"));
-        this.contactList.add(new ContactInfo("Street Play","Thespian Arts","saarang1"));
-        this.contactList.add(new ContactInfo("World Culture Show","International Artistes","saarang1"));
-        this.contactList.add(new ContactInfo("Scrabble","Word Games","saarang1"));
+        this.dataList = new ArrayList<>();
+        this.dataList.add(new DataInfo(1,"Decibels","Rock","saarang1"));
+        this.dataList.add(new DataInfo(2,"Acapella","Light Music","saarang1"));
+        this.dataList.add(new DataInfo(3,"Alankaar","Classical Music","saarang1"));
+        this.dataList.add(new DataInfo(4,"Street Play","Thespian Arts","saarang1"));
+        this.dataList.add(new DataInfo(5,"World Culture Show","International Artistes","saarang1"));
+        this.dataList.add(new DataInfo(6,"Scrabble","Word Games","saarang1"));
     }
 
-    public final static String TITLE_MESSAGE = "com.mycompany.myfirstapp.MESSAGE";          //TODO - why do we need these 2 lines?
-    public final static String SUBTITLE_MESSAGE = "com.mycompany.myfirstapp.NEWMESSAGE";
+    public final static String TITLE_MESSAGE = "com.mycompany.myfirstapp.title";          //TODO - why do we need these 2 lines?
+    public final static String SUBTITLE_MESSAGE = "com.mycompany.myfirstapp.subtitle";
+    public final static String POS_MESSAGE = "com.mycompany.myfirstapp.position";
+
 
 
     /*This is the class that implements the ViewHolder*/
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView title, subtitle;
+        int position;
         //ImageView image;
         private final Context context;
         public ViewHolder(View itemView) {
@@ -70,8 +65,8 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.ViewHolder
            intent = new Intent(context, displayDetails.class);
            intent.putExtra(TITLE_MESSAGE, title.getText().toString() );
            intent.putExtra(SUBTITLE_MESSAGE, subtitle.getText().toString() );
+           intent.putExtra(POS_MESSAGE,position);
            context.startActivity(intent);
-
        }
     }
 
@@ -94,8 +89,9 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(SimpleAdapter.ViewHolder holder, int position) {
-        holder.title.setText(this.contactList.get(position).title);
-        holder.subtitle.setText(this.contactList.get(position).subtitle);
+        holder.title.setText(this.dataList.get(position).getTitle());
+        holder.subtitle.setText(this.dataList.get(position).getSubtitle());
+        holder.position = position;
         //holder.title.setText(events[position]);
         //holder.subtitle.setText(details[position]);
         //int id = context.getResources().getIdentifier("saarang1", "drawable", "R");
@@ -104,6 +100,6 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return contactList.size();
+        return dataList.size();
     }
 }

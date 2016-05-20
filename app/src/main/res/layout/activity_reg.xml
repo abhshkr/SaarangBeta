@@ -1,173 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingLeft="8dp"
-    android:paddingTop="16dp"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     tools:context="com.example.abhi.saarangbeta.regActivity">
 
-    <TextView
-        android:id="@+id/testtitle"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="Registration for Saarang 2017"
-        android:textColor="#111111"
-        android:textSize="27sp"
-        android:textStyle="bold" />
-    <!--TODO - increase the spacing between the rows and fix the last row - find which view to use.-->
-    <!--TODO - find out what happend when text overflows from the screen - scrollbar comes?-->
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:columnCount="2"
-        android:orientation="horizontal"
-        android:padding="8dp"
-        android:rowCount="4">
+        android:orientation="vertical"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="16dp">
 
         <TextView
+            android:id="@+id/testtitle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginRight="16dp"
-            android:gravity="center"
-            android:text="First Name:"
-            android:textAllCaps="true"
-            android:textSize="20sp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"/>
-
-        <EditText
-            android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:hint="Enter your first name"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
-            android:gravity="start"
-             />
-
-        <TextView
+            android:gravity="center_horizontal"
+            android:text="Registration for Saarang 2017"
+            android:textColor="#111111"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+        <!--TODO - increase the spacing between the rows and fix the last row - find which view to use.-->
+        <!--TODO - find out what happend when text overflows from the screen - scrollbar comes?-->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginRight="16dp"
-            android:gravity="center"
-            android:text="Last Name:"
-            android:textAllCaps="true"
-            android:textSize="20sp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"/>
-
-        <EditText
-            android:layout_width="240dp"
             android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            android:hint="Enter your last name"
-            android:gravity="start"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="3"
+                android:gravity="center_vertical|end"
+                android:text="First Name:"
+                android:textAllCaps="true"
+                android:textSize="18sp" />
 
-        <TextView
+            <EditText
+                android:id="@+id/firstname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="5"
+                android:gravity="start"
+                android:hint="Enter your first name" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginRight="16dp"
-            android:gravity="center"
-            android:text="Email:"
-            android:textAllCaps="true"
-            android:textSize="20sp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"/>
-
-        <EditText
-            android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:hint="Enter your email address"
-            android:gravity="start"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"/>
+            android:orientation="horizontal">
 
-        <TextView
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="3"
+                android:gravity="center_vertical|end"
+                android:text="Last Name:"
+                android:textAllCaps="true"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/lastname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+
+                android:layout_marginTop="8dp"
+                android:layout_weight="5"
+                android:gravity="start"
+                android:hint="Enter your last name" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginRight="16dp"
-            android:gravity="center"
-            android:text="Phone No.:"
-            android:textAllCaps="true"
-            android:textSize="20sp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"/>
-
-        <EditText
-            android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:hint="Enter your phone number"
-            android:gravity="start"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"/>
+            android:orientation="horizontal">
 
-        <TextView
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="3"
+                android:gravity="center_vertical|end"
+                android:text="Email:"
+                android:textAllCaps="true"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="5"
+                android:gravity="start"
+                android:hint="Enter your email address" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginRight="16dp"
-            android:gravity="center"
-            android:text="College:"
-            android:textAllCaps="true"
-            android:textSize="20sp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"/>
-
-        <EditText
-            android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:hint="Enter your college"
-            android:gravity="start"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
-            />
-    </GridLayout>
+            android:orientation="horizontal">
 
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/regSpinner"
-        />
-    <!--<EditText-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="center_horizontal"-->
-        <!--android:layout_margin="8dp"-->
-        <!--android:hint="Choose the event you want to participate in" />-->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="3"
+                android:gravity="center_vertical|end"
+                android:text="Phone No.:"
+                android:textAllCaps="true"
+                android:textSize="18sp" />
 
-    <Button
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="16dp"
-        android:text="Register" />
+            <EditText
+                android:id="@+id/phonenumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="5"
+                android:gravity="start"
+                android:hint="Enter your phone number" />
+        </LinearLayout>
 
-    <!--<LinearLayout-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:padding="8dp"-->
-    <!--android:orientation="horizontal">-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    <!--<TextView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:text="Name:"-->
-    <!--android:textAllCaps="true"-->
-    <!--android:textSize="20sp"-->
-    <!--android:gravity="center"-->
-    <!--android:layout_marginRight="16dp"-->
-    <!--/>-->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="3"
+                android:gravity="center_vertical|end"
+                android:text="College:"
+                android:textAllCaps="true"
+                android:textSize="18sp" />
 
-    <!--<EditText-->
-    <!--android:layout_width="240dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:hint="Enter your name"-->
-    <!--android:textAlignment="viewStart"-->
-    <!--android:gravity="center"/>-->
-    <!--</LinearLayout>-->
+            <EditText
+                android:id="@+id/collegename"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="5"
+                android:gravity="start"
+                android:hint="Enter your college" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="3"
+                android:gravity="center_vertical|end"
+                android:text="Event:"
+                android:textAllCaps="true"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/regSpinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:gravity="" />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="16dp"
+            android:onClick="registerButton"
+            android:text="Register" />
 
 
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>
