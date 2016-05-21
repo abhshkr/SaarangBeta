@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.provider.CalendarContract;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,19 +15,20 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 /* Activity which shows the details of the chosen option from MainActivity
     Parent Activity: MainActivity
  */
 
 public class displayDetails extends AppCompatActivity {
     //Data items obtained from MainActivity
-    public String title, subtitle;
-    public int position;
+    private DataInfo dataInfo;
 
     //Keys for Intent.putExtra()
-    public final static String TITLE_MESSAGE = "abhi.android";
-    public final static String SUBTITLE_MESSAGE = "abhi.android2";
-    public final static String POS_MESSAGE = "abhi.android3";
+    public final static String REG_MESSAGE = "abhi.android";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,40 +40,64 @@ public class displayDetails extends AppCompatActivity {
 
         //Receiving data from parent activity
         Intent intent = getIntent();
-        title = intent.getStringExtra(SimpleAdapter.TITLE_MESSAGE);
-        subtitle = intent.getStringExtra(SimpleAdapter.SUBTITLE_MESSAGE);
-        position = intent.getExtras().getInt(SimpleAdapter.POS_MESSAGE);
+        dataInfo = (DataInfo) intent.getSerializableExtra(SimpleAdapter.DATA_MESSAGE);
 
-        //Formatting the display
-        titleView.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
-        titleView.setText(title);
-        subtitleView.setTypeface(null, Typeface.ITALIC);
-        subtitleView.setText(subtitle);
+        //Formatting display
+        titleView.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG); //underlines title
+        titleView.setText(dataInfo.getTitle());
+        subtitleView.setTypeface(null, Typeface.ITALIC);    //italicizes subtitle
+        subtitleView.setText(dataInfo.getSubtitle());
+
+        ((TextView) findViewById(R.id.aboutDetails)).setText(dataInfo.getDetails());
+        ((TextView) findViewById(R.id.coordDetails)).setText(dataInfo.getCoordName() + "\nPhone: " + dataInfo.getCoordPhoneNumber() + "\nEmail: " + dataInfo.getCoordEmail());
+        ((TextView) findViewById(R.id.locationDetails)).setText(dataInfo.getLocation() + ", IIT Madras");
+
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE, MMMM dd, yyyy 'at' hh:mm aa");
+        String date = sdf.format(dataInfo.getCalendar().getTime());
+        ((TextView) findViewById(R.id.timeDetails)).setText(date);
 
         //ActionBar initialization and properties
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setTitle(title);
+        actionBar.setDisplayHomeAsUpEnabled(true);      //enables back button
+        actionBar.setTitle(dataInfo.getTitle());        //sets Title text
     }
 
-    /*Functions for calling, opening MapActivity. onClick attribute given to buttons, directing to these functions */
+    //Function for Call button
     public void callButton(View view) {
-        Intent call = new Intent(Intent.ACTION_DIAL);
-        call.setData(Uri.parse("tel:9731804361"));
-        try {
-            startActivity(call);
-        } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(getApplicationContext(), "yourActivity is not founded", Toast.LENGTH_SHORT).show();
-        }
+        Intent call = new Intent(Intent.ACTION_DIAL); //only dials the number, does not call (use ACTION_CALL to call directly)
+        call.setData(Uri.parse("tel:" + dataInfo.getCoordPhoneNumber()));
+        startActivity(call);
     }
 
+    //Function for Email button
+    public void emailButton(View view) {
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.setType("text/plain");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{dataInfo.getCoordEmail()});
+        startActivity(emailIntent);
+    }
+
+    //Function for Map button
     public void mapButton(View view) {
-        Intent map = new Intent(getApplicationContext(), MapActivity.class);
-        try {
-            startActivity(map);
-        } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(getApplicationContext(), "yourActivity is not founded", Toast.LENGTH_SHORT).show();
-        }
+        Uri gmmIntentUri = Uri.parse("geo:12.990071, 80.230344?q=" + Uri.encode(dataInfo.getLocation()));
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        startActivity(mapIntent);
+    }
+
+    //Function for Calendar button
+    public void calendarButton(View view) {
+        Intent calIntent = new Intent(Intent.ACTION_INSERT);
+        calIntent.setType("vnd.android.cursor.item/event");
+        calIntent.putExtra(CalendarContract.Events.TITLE, dataInfo.getTitle()+" - Saarang, IIT Madras");
+        calIntent.putExtra(CalendarContract.Events.EVENT_LOCATION, dataInfo.getLocation()+", IIT Madras");
+        //GregorianCalendar calDate = new GregorianCalendar(2017, 0, 6,10,0,0);
+        calIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
+                dataInfo.getCalendar().getTimeInMillis());
+        calIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
+                dataInfo.getCalendar().getTimeInMillis()+60*60*1000);
+        startActivity(calIntent);
     }
 
     /*Functions for ActionBar operations*/
@@ -80,17 +106,14 @@ public class displayDetails extends AppCompatActivity {
 
 
         switch (item.getItemId()) {
-            case R.id.regActivity:
+            case R.id.regActivity:                      //Register button
                 Intent goToRegister;
                 goToRegister = new Intent(getApplicationContext(), regActivity.class);
-                goToRegister.putExtra(TITLE_MESSAGE, title);
-                goToRegister.putExtra(SUBTITLE_MESSAGE, subtitle);
-                goToRegister.putExtra(POS_MESSAGE, position);
+                goToRegister.putExtra(displayDetails.REG_MESSAGE, dataInfo);
                 startActivity(goToRegister);
                 break;
-            case android.R.id.home:
-//                myIntent = new Intent(getApplicationContext(), MainActivity.class);
-                NavUtils.navigateUpFromSameTask(this);
+            case android.R.id.home:                     //Back button
+                NavUtils.navigateUpFromSameTask(this);  //ParentActivity is defined as MainActivity in Manifest
                 break;
             default:
                 return super.onOptionsItemSelected(item);

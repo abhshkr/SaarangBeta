@@ -12,7 +12,7 @@
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:paddingTop="16dp">
-
+        <!--Title-->
         <TextView
             android:id="@+id/testtitle"
             android:layout_width="match_parent"
@@ -22,8 +22,8 @@
             android:textColor="#111111"
             android:textSize="26sp"
             android:textStyle="bold" />
-        <!--TODO - increase the spacing between the rows and fix the last row - find which view to use.-->
-        <!--TODO - find out what happend when text overflows from the screen - scrollbar comes?-->
+        <!--LinearLayout for Each Form Entry-->
+        <!--First Name-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,6 +52,7 @@
                 android:hint="Enter your first name" />
         </LinearLayout>
 
+        <!--Last Name-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -81,6 +82,7 @@
                 android:hint="Enter your last name" />
         </LinearLayout>
 
+        <!--Email-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -109,6 +111,7 @@
                 android:hint="Enter your email address" />
         </LinearLayout>
 
+        <!--Phone Number-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -137,6 +140,7 @@
                 android:hint="Enter your phone number" />
         </LinearLayout>
 
+        <!--College-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -165,6 +169,7 @@
                 android:hint="Enter your college" />
         </LinearLayout>
 
+        <!--Event - Spinner-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -173,11 +178,12 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_marginBottom="8dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_weight="3"
-                android:gravity="center_vertical|end"
+                android:gravity="end"
                 android:text="Event:"
                 android:textAllCaps="true"
                 android:textSize="18sp" />
@@ -186,10 +192,12 @@
                 android:id="@+id/regSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="5"
-                android:gravity="" />
+                android:gravity="center_vertical" />
         </LinearLayout>
 
+        <!--Register Button-->
         <Button
             android:layout_width="160dp"
             android:layout_height="wrap_content"
@@ -197,7 +205,6 @@
             android:layout_margin="16dp"
             android:onClick="registerButton"
             android:text="Register" />
-
 
     </LinearLayout>
 </ScrollView>
