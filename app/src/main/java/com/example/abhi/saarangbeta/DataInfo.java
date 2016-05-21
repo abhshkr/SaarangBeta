@@ -15,21 +15,18 @@ public class DataInfo implements Serializable {
     int id;
     private String title;
     private String subtitle;
-    private String imgSrc;
+    private String imgSrc;  //not used, as of now - can be used to change the background image
     private String details;
     private String location;
-    private String date;
-    private String time;
     Calendar calendar;
-    double givenDuration;
-    private String coordPhoneNumber;
+    double duration;
+    String coordPhoneNumber;
     private String coordName;
     private String coordEmail;
 
 
     //Constructor
-    //, String givendate, String giventime
-    public DataInfo (int givenId, String ttl, String subttl, String name, String phoneNo, String emailID, String givenlocation, Calendar givenCalendar, double givenDuration, String imgs) {
+    public DataInfo(int givenId, String ttl, String subttl, String name, String phoneNo, String emailID, String givenlocation, Calendar givenCalendar, double givenDuration, String imgs) {
         id = givenId;
         title = ttl;
         subtitle = subttl;
@@ -39,35 +36,56 @@ public class DataInfo implements Serializable {
         coordEmail = emailID;
         coordPhoneNumber = phoneNo;
         location = givenlocation;
+        duration = givenDuration;
     }
+
     //getter functions
-    public String getTitle(){
+    public String getTitle() {
         return title;
     }
-    public String getSubtitle(){
+
+    public String getSubtitle() {
         return subtitle;
     }
-    public int getId(){
-        return id;
+
+    public String getDetails() {
+        return details;
     }
-    public String getDetails(){return details;}
-    public String getCoordName(){return coordName;}
-    public String getCoordPhoneNumber(){return coordPhoneNumber;}
-    public String getCoordEmail(){return coordEmail;}
-    public String getLocation(){ return location; }
+
+    public String getCoordName() {
+        return coordName;
+    }
+
+    public String getCoordPhoneNumber() {
+        return coordPhoneNumber;
+    }
+
+    public String getCoordEmail() {
+        return coordEmail;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
     public Calendar getCalendar() {
         return calendar;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public double getDuration() {
+        return duration;
+    }
+
     //setter functions
-    public void setId(int setid){
+    public void setId(int setid) {
         id = setid;
     }
-    public void setCoordPhoneNumber(String phno){
-        coordPhoneNumber = phno;
-    }
-    public void setDetails(String detailsgiven){
+
+    public void setDetails(String detailsgiven) {
         details = detailsgiven;
     }
-    public void setCoordName(String name){ coordName = name;}
 }

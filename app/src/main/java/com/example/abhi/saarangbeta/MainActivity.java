@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
 
         data = new ArrayList<>();
         //Adding the new data to the list
-        //"January 6","10:00AM",
         data.add(new DataInfo(0,"Vox","Western Music - Solo","Prerna Dhareshwar","9940510404",
                 "prerana@gmail.com","Class Room Complex",new GregorianCalendar(2017,0,6,10,0,0), 2,"saarang1") );
         data.add(new DataInfo(1,"Decibels","Western Music - Band","Srikanth Musti","9790464090",
@@ -64,8 +63,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //ActionBar initialization and properties
-        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Saarang 2017");
+        getSupportActionBar().setTitle("Saarang 2017");
 
         /*actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.drawable.callicon);   //To set an icon on toolbar */

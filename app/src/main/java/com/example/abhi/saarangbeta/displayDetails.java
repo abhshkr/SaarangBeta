@@ -18,6 +18,7 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 /* Activity which shows the details of the chosen option from MainActivity
     Parent Activity: MainActivity
@@ -88,27 +89,21 @@ public class displayDetails extends AppCompatActivity {
 
     //Function for Calendar button
     public void calendarButton(View view) {
-        Intent calIntent = new Intent(Intent.ACTION_INSERT);
-        calIntent.setType("vnd.android.cursor.item/event");
-        calIntent.putExtra(CalendarContract.Events.TITLE, dataInfo.getTitle()+" - Saarang, IIT Madras");
-        calIntent.putExtra(CalendarContract.Events.EVENT_LOCATION, dataInfo.getLocation()+", IIT Madras");
-        //GregorianCalendar calDate = new GregorianCalendar(2017, 0, 6,10,0,0);
-        calIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
-                dataInfo.getCalendar().getTimeInMillis());
-        calIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
-                dataInfo.getCalendar().getTimeInMillis()+60*60*1000);
-        startActivity(calIntent);
+        Intent calendarIntent = new Intent(Intent.ACTION_INSERT);
+        calendarIntent.setType("vnd.android.cursor.item/event");
+        calendarIntent.putExtra(CalendarContract.Events.TITLE, dataInfo.getTitle()+" - Saarang, IIT Madras");    //Event Title
+        calendarIntent.putExtra(CalendarContract.Events.EVENT_LOCATION, dataInfo.getLocation()+", IIT Madras");  //Event Location
+        calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, dataInfo.getCalendar().getTimeInMillis());  //Event start time/date
+        calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, dataInfo.getCalendar().getTimeInMillis()+(int)(dataInfo.getDuration()*60*60*1000)); //event end time/date
+        startActivity(calendarIntent);
     }
 
     /*Functions for ActionBar operations*/
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-
         switch (item.getItemId()) {
             case R.id.regActivity:                      //Register button
-                Intent goToRegister;
-                goToRegister = new Intent(getApplicationContext(), regActivity.class);
+                Intent goToRegister = new Intent(getApplicationContext(), regActivity.class);
                 goToRegister.putExtra(displayDetails.REG_MESSAGE, dataInfo);
                 startActivity(goToRegister);
                 break;

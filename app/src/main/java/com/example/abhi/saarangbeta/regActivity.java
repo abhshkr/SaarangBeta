@@ -32,8 +32,7 @@ public class regActivity extends AppCompatActivity {
         actionBar.setTitle("Registration");
 
         //Setting Title
-        TextView test = (TextView) findViewById(R.id.testtitle);
-        test.setText("Registration for Saarang 2017");
+        ((TextView) findViewById(R.id.testtitle)).setText("Registration for Saarang 2017");
 
         //List for spinner dropdown menu
         List<String> events = new ArrayList<>();
