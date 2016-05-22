@@ -2,6 +2,4 @@
     <string name="app_name">Saarang Beta</string>
     <string name="appLabel">Saarang 2017</string>
     <string name="title_activity_reg">regActivity</string>
-    <string name="title_activity_map">Map</string>
-    <string name="Rs">\u20B9</string>
 </resources>
