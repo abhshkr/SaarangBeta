@@ -56,6 +56,9 @@ public class displayDetails extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE, MMMM dd, yyyy 'at' hh:mm aa");
         String date = sdf.format(dataInfo.getCalendar().getTime());
         ((TextView) findViewById(R.id.timeDetails)).setText(date);
+        ((TextView) findViewById(R.id.prizeDetails)).setText("First: "+"\u20B9"+Integer.toString(dataInfo.getPrizeMoneyFirst())+
+                "\nSecond: "+"\u20B9"+Integer.toString(dataInfo.getPrizeMoneySecond())+
+                "\nThird: "+"\u20B9"+Integer.toString(dataInfo.getPrizeMoneyThird()));
 
         //ActionBar initialization and properties
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--ScrollView is the outermost layout to enable scrolling-->
+<?xml version="1.0" encoding="utf-8"?><!--ScrollView is the outermost layout to enable scrolling-->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
@@ -216,7 +215,6 @@
                 android:textSize="16sp" />
 
 
-
             <!--Location-->
             <TextView
                 android:layout_width="wrap_content"
@@ -271,8 +269,26 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_marginBottom="24dp"
                 android:text="Sample Details"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="Prize Money:"
+                android:textAllCaps="true"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/prizeDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:text="Sample Money."
                 android:textSize="16sp" />
 
         </LinearLayout>

@@ -21,17 +21,17 @@ public class MainActivity extends AppCompatActivity {
         data = new ArrayList<>();
         //Adding the new data to the list
         data.add(new DataInfo(0,"Vox","Western Music - Solo","Prerna Dhareshwar","9940510404",
-                "prerana@gmail.com","Class Room Complex",new GregorianCalendar(2017,0,6,10,0,0), 2,"saarang1") );
+                "prerana@gmail.com","Class Room Complex",new GregorianCalendar(2017,0,6,10,0,0), 2,5000,3000,1000,"saarang1") );
         data.add(new DataInfo(1,"Decibels","Western Music - Band","Srikanth Musti","9790464090",
-                "srikanth@gmail.com","Students Activity Center",new GregorianCalendar(2017,0,6,15,0,0),3.5,"saarang1") );
+                "srikanth@gmail.com","Students Activity Center",new GregorianCalendar(2017,0,6,15,0,0),3.5,10000,7000,5000,"saarang1") );
         data.add(new DataInfo(2,"Alankar","Light Music - Solo","Karun Kumar","8939233166",
-                "karun@gmail.com","Central Lecture Theater",new GregorianCalendar(2017,0,7,11,0,0),3,"saarang1") );
+                "karun@gmail.com","Central Lecture Theater",new GregorianCalendar(2017,0,7,11,0,0),3,3000,2000,1000,"saarang1") );
         data.add(new DataInfo(3,"Unplugged","Light Music - Band","Anandi Puritipati","7200416557",
-                "anandp@gmail.com","Central Lecture Theater",new GregorianCalendar(2017,0,7,14,0,0),3,"saarang1") );
+                "anandp@gmail.com","Central Lecture Theater",new GregorianCalendar(2017,0,7,14,0,0),3,7000,4000,2000,"saarang1") );
         data.add(new DataInfo(4,"Scrabble","Word Games","Gaurav Lodha","9962121749",
-                "glodha0@gmail.com","Class Room Complex",new GregorianCalendar(2017,0,8,12,0,0),2,"saarang1") );
+                "glodha0@gmail.com","Class Room Complex",new GregorianCalendar(2017,0,8,12,0,0),2,3000,2000,1000,"saarang1") );
         data.add(new DataInfo(5,"SpellBee","Word Games","Divyanjana Prashansa","9176489610",
-                "divya150397@gmail.com","Class Room Complex",new GregorianCalendar(2017,0,8,16,0,0),1,"saarang1"));
+                "divya150397@gmail.com","Class Room Complex",new GregorianCalendar(2017,0,8,16,0,0),1,4000,3000,1000,"saarang1"));
 
         //Adding details for each data item to the list
         data.get(0).setDetails("Saarang gives you a platform to get out there and win hearts with your vocal talent. This solo singing competition" +

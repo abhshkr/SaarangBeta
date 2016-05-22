@@ -23,10 +23,13 @@ public class DataInfo implements Serializable {
     String coordPhoneNumber;
     private String coordName;
     private String coordEmail;
+    int prizeMoneyFirst;
+    int prizeMoneySecond;
+    int prizeMoneyThird;
 
 
     //Constructor
-    public DataInfo(int givenId, String ttl, String subttl, String name, String phoneNo, String emailID, String givenlocation, Calendar givenCalendar, double givenDuration, String imgs) {
+    public DataInfo(int givenId, String ttl, String subttl, String name, String phoneNo, String emailID, String givenlocation, Calendar givenCalendar, double givenDuration, int prizeFirst, int prizeSecond, int prizeThird, String imgs) {
         id = givenId;
         title = ttl;
         subtitle = subttl;
@@ -37,6 +40,9 @@ public class DataInfo implements Serializable {
         coordPhoneNumber = phoneNo;
         location = givenlocation;
         duration = givenDuration;
+        prizeMoneyFirst = prizeFirst;
+        prizeMoneySecond = prizeSecond;
+        prizeMoneyThird = prizeThird;
     }
 
     //getter functions
@@ -78,6 +84,18 @@ public class DataInfo implements Serializable {
 
     public double getDuration() {
         return duration;
+    }
+
+    public int getPrizeMoneyFirst() {
+        return prizeMoneyFirst;
+    }
+
+    public int getPrizeMoneySecond() {
+        return prizeMoneySecond;
+    }
+
+    public int getPrizeMoneyThird() {
+        return prizeMoneyThird;
     }
 
     //setter functions
